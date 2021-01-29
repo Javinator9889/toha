@@ -108,12 +108,15 @@
     <img src="{{ $authorImage.RelPermalink }}"
       class="rounded-circle mx-auto d-block img-fluid"
     />
-    <h1 class="greeting"> {{ $author.greeting }} {{ $name }}</h1>
     <div class="typing-carousel">
-      <span id="ityped" class="ityped"></span>
       <span class="ityped-cursor"></span>
+      <h1 class="greeting"> {{ $author.greeting }} <span id="ityped"></span></h1>
+      <ul id="typing-carousel-data">
+        <li>{{ $author.name }}</li>
+        <li>{{ $author.nickname }}</li>
+      </ul>
     </div>
-    <ul id="typing-carousel-data">
+    <ul style="text-align: left!important;">
       {{ if $author.summary }}
         {{ range $author.summary }}
           <li>{{ . }}</li>
