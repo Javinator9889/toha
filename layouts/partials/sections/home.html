@@ -110,7 +110,7 @@
     />
     <div class="typing-carousel">
       <span class="ityped-cursor"></span>
-      <h1 class="greeting"> {{ $author.greeting }} <span id="ityped"></span></h1>
+      <h1 class="greeting" style="stroke-width: 1px; stroke: black;"> {{ $author.greeting }} <span id="ityped"></span></h1>
       <ul id="typing-carousel-data">
         <li>{{ $author.name }}</li>
         <li>{{ $author.nickname }}</li>
@@ -119,7 +119,7 @@
     <ul style="list-style-type: none;">
       {{ if $author.summary }}
         {{ range $author.summary }}
-          <li>{{ . }}</li>
+          <li style="stroke: black; stroke-width: 1px;">{{ . }}</li>
         {{ end}}
       {{ end }}
     </ul>
