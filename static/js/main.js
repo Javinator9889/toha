@@ -156,9 +156,9 @@ function showMoreCourses(elem) {
 
   // toggle the button text
   let btnText = elem.innerText;
-  if (btnText == "Show More") {
-    elem.innerText = "Show Less";
+  if (btnText == "Show more") {
+    elem.innerText = "Show less";
   } else {
-    elem.innerText = "Show More";
+    elem.innerText = "Show more";
   }
 }
