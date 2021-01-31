@@ -7,6 +7,12 @@
   {{ if not (.section.hideTitle) }}
     <h1 class="text-center">{{ .section.name }}</h1>
   {{ end }}
+  {{ if .codersrank.enable }}
+  {{ $username := .codersrank.username }}
+  <div class="container d-flex-block">
+    <codersrank-summary username="{{ $username }}" badges=3 branding=false></codersrank-summary>
+  </div>
+  {{ end }}
   <div class="container d-flex-block">
     <div class="row" id="primary-skills">
       {{ range .skills }}
@@ -14,4 +20,11 @@
       {{ end }}
     </div>
   </div>
+  {{ if .codersrank.enable }}
+  {{ $username := .codersrank.username }}
+  <div class="container d-flex-block">
+    <h2>{{ i18n "skills_evo" }}</h2>
+    <codersrank-skills-chart username="{{ $username }}" labels=true legend=true svg-height=160 tooltip=true branding=false></codersrank-skills-chart>
+  </div>
+  {{ end }}
 </div>

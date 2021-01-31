@@ -39,7 +39,26 @@
     </script>
     {{ end }}
 
-    <script async src="https://telegram.org/js/telegram-widget.js?14" data-telegram-share-url="https://t.me/Javinator9889" data-comment="Write me on Telegram!"></script>
+    <!--================= CodersRank widgets ==============================-->
+    {{ if .Site.Params.codersrank.enable }}
+      {{ $codersrank := .Site.Params.codersrank }}
+      {{ if $codersrank.summary.enable }}
+        {{ $version := $codersrank.summary.version }}
+        <script async src="https://unpkg.com/@codersrank/summary@{{ $version }}/codersrank-summary.min.js"></script>
+      {{ end }}
+      {{ if $codersrank.activity.enable }}
+        {{ $version := $codersrank.activity.version }}
+        <script async src="https://unpkg.com/@codersrank/activity@{{ $version }}/codersrank-activity.min.js"></script>
+      {{ end }}
+      {{ if $codersrank.skills.enable }}
+        {{ $version := $codersrank.skills.version }}
+        <script async src="https://unpkg.com/@codersrank/skills-chart@{{ $version }}/codersrank-skills-chart.min.js"></script>
+      {{ end }}
+      {{ if $codersrank.portfolio.enable }}
+        {{ $version := $codersrank.portfolio.version }}
+        <script src="https://unpkg.com/@codersrank/portfolio@{{ $version }}/codersrank-portfolio.min.js"></script>
+      {{ end }}
+    {{ end }}
   </head>
   <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
 

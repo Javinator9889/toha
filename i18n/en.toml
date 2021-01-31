@@ -76,3 +76,12 @@ other = "Show more"
 
 [show_less]
 other = "Show less"
+
+[activity]
+other = "Last year activity"
+
+[skills_evo]
+other = "Skills evolution over time"
+
+[more_projects]
+other = "Wanna see more projects? Checkout my GitHub's profile and latest contributions!"

@@ -1,13 +1,21 @@
-{{ $sectionID := replace (lower .section.name) " " "-"  }}
+{{ $sectionID := replace (lower .section.name) " " "-" }}
 {{ if .section.id }}
-  {{ $sectionID = .section.id }}
+{{ $sectionID = .section.id }}
 {{ end }}
 
 <div class="container-fluid anchor pb-5 projects-section" id="{{ $sectionID }}">
   {{ if not (.section.hideTitle) }}
-    <h1 class="text-center">{{ .section.name }}</h1>
+  <h1 class="text-center">{{ .section.name }}</h1>
   {{ end }}
   <div class="container ml-auto text-center">
+    {{ if .codersrank.enable }}
+    {{ $username := .codersrank.username }}
+    <div class="container d-flex-block">
+      <h3>{{ i18n "activity" }}</h3>
+      <codersrank-activity username="{{ $username }}" labels=true legend=true tooltip=true branding=false>
+      </codersrank-activity>
+    </div>
+    {{ end }}
     <div class="btn-group flex-wrap" role="group" id="project-filter-buttons">
       {{ range .buttons }}
       <button type="button" class="btn btn-dark" data-filter="{{ .filter }}">
@@ -19,8 +27,27 @@
   <div class="container filtr-projects">
     <div class="row" id="project-card-holder">
       {{ range .projects }}
-        {{ partial "cards/project" . }}
+      {{ partial "cards/project" . }}
       {{ end }}
     </div>
   </div>
+  {{ if .github.enable }}
+  {{ $username := .github.username }}
+  {{ $githubButton := "/images/view-on-github.png" }}
+  {{ $githubButton := resources.Get $githubButton }}
+  {{ if and $githubButton (ne $githubButton.MediaType.SubType "svg") }}
+  {{ $githubButton = $githubButton.Resize "256x" }}
+  {{ end }}
+  {{ $githubButton := $githubButton.RelPermalink }}
+  <div class="container ml-auto text-center" style="padding-top: 32px;">
+    <div class="container d-flex-block">
+      <p>
+        <span>{{ i18n "more_projects" }}</span>
+      </p>
+      <p>
+        <a href="https://github.com/{{ $username }}"><img src="{{ $githubButton }}" /></a>
+      </p>
+    </div>
+  </div>
+  {{ end }}
 </div>
