@@ -1,0 +1,30 @@
+{{ $sectionID := replace (lower .section.name) " " "-"  }}
+{{ $recaptcha_key := .reCaptcha.key }}
+{{ $telegram_url := .telegram.url }}
+{{ $telegram_button := "/images/telegram-button.png" }}
+{{ $telegram_button := resources.Get $telegram_button }}
+{{ if and $telegram_button (ne $telegram_button.MediaType.SubType "svg") }}
+  {{ $telegram_button = $telegram_button.Resize "256x" }}
+{{ end }}
+{{ $telegram_button := $telegram_button.RelPermalink }}
+{{ if .section.id }}
+  {{ $sectionID = .section.id }}
+{{ end }}
+
+<div class="container-fluid anchor pb-5 achievements-section" id="{{ $sectionID }}">
+  {{ if not (.section.hideTitle) }}
+    <h1 class="text-center">{{ .section.name }}</h1>
+  {{ end }}
+  <div class="container">
+    <div class="container ml-auto text-center">
+        <p>
+        <button class="g-recaptcha btn btn-custom btn-success btn-send center" data-sitekey="{{ $recaptcha_key }}" data-action="submit" data-callback="onSubmit">Send email</button>
+        </p>
+        {{ if .telegram.url }}
+        <p>
+        <a href="{{ .telegram.url }}"><img src="{{ $telegram_button }}"/></a>
+        </p>
+        {{ end }}
+    </div>
+  </div>
+</div>

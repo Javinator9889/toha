@@ -28,6 +28,18 @@
     {{ if site.GoogleAnalytics }}
         {{ template "_internal/google_analytics_async.html" . }}
     {{ end }}
+
+    <!--================= Google reCaptcha ===============================-->
+    {{ if .Site.Params.reCaptcha.enable }}
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+      function onSubmit(token) {
+        window.open("mailto:contact@javinator9889.com");
+      }
+    </script>
+    {{ end }}
+
+    <script async src="https://telegram.org/js/telegram-widget.js?14" data-telegram-share-url="https://t.me/Javinator9889" data-comment="Write me on Telegram!"></script>
   </head>
   <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
 
