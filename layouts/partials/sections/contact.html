@@ -18,7 +18,7 @@
   <div class="container">
     <div class="container ml-auto text-center">
         <p>
-        <button class="g-recaptcha btn btn-custom btn-success btn-send center" data-sitekey="{{ $recaptcha_key }}" data-action="submit" data-callback="onSubmit">Send email</button>
+        <button class="g-recaptcha btn btn-custom btn-success btn-send center" data-sitekey="{{ $recaptcha_key }}" data-action="submit" data-callback="onSubmit">{{ i18n "send_email" }}</button>
         </p>
         {{ if .telegram.url }}
         <p>

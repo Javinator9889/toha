@@ -88,3 +88,6 @@ other = "¿Quieres ver más proyectos? ¡Échale un vistazo a mi perfil de GitHu
 
 [present]
 other = "Actualidad"
+
+[send_email]
+other = "Enviar email"
