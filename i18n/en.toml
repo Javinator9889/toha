@@ -91,3 +91,9 @@ other = "Present"
 
 [send_email]
 other = "Send email"
+
+[date_format]
+other = "02 Jan 2006 15:04 MST"
+
+[last_update]
+other = "This website was last updated on "
