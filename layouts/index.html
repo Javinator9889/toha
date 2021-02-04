@@ -17,6 +17,7 @@
     {{ end }}
     <meta name="description" content="{{ $siteDescription }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://api.github.com" crossorigin="anonymous">
     {{ if .Site.Params.codersrank.enable }}
@@ -102,14 +103,14 @@
     {{ partial "scripts.html" . }}
 
     <!--- ADD INDEX PAGE SPECIFIC SCRIPTS -->
-    <script src="{{ "/js/itype.min.js" | relURL }}"></script>
-    <script src="{{ "/js/github-button.js" | relURL }}"></script>
-    <script src="{{ "/js/home.js" | relURL }}"></script>
-    <script src="{{ "/js/jquery.filterizr.min.js" | relURL }}"></script>
+    <script defer src="{{ "/js/itype.min.js" | relURL }}"></script>
+    <script defer src="{{ "/js/github-button.js" | relURL }}"></script>
+    <script defer src="{{ "/js/home.js" | relURL }}"></script>
+    <script defer src="{{ "/js/jquery.filterizr.min.js" | relURL }}"></script>
      <!--================= Google reCaptcha ===============================-->
      {{ if .Site.Params.reCaptcha.enable }}
      {{ $mail := site.Params.email }}
-     <script async src="https://www.google.com/recaptcha/api.js"></script>
+     <script defer src="https://www.google.com/recaptcha/api.js"></script>
      <script>
        function onSubmit(token) {
          window.open("mailto:{{ $mail }}");
@@ -121,19 +122,19 @@
       {{ $codersrank := .Site.Params.codersrank }}
       {{ if $codersrank.summary.enable }}
         {{ $version := $codersrank.summary.version }}
-        <script async src="https://unpkg.com/@codersrank/summary@{{ $version }}/codersrank-summary.min.js"></script>
+        <script defer src="https://unpkg.com/@codersrank/summary@{{ $version }}/codersrank-summary.min.js"></script>
       {{ end }}
       {{ if $codersrank.activity.enable }}
         {{ $version := $codersrank.activity.version }}
-        <script async src="https://unpkg.com/@codersrank/activity@{{ $version }}/codersrank-activity.min.js"></script>
+        <script defer src="https://unpkg.com/@codersrank/activity@{{ $version }}/codersrank-activity.min.js"></script>
       {{ end }}
       {{ if $codersrank.skills.enable }}
         {{ $version := $codersrank.skills.version }}
-        <script async src="https://unpkg.com/@codersrank/skills-chart@{{ $version }}/codersrank-skills-chart.min.js"></script>
+        <script defer src="https://unpkg.com/@codersrank/skills-chart@{{ $version }}/codersrank-skills-chart.min.js"></script>
       {{ end }}
       {{ if $codersrank.portfolio.enable }}
         {{ $version := $codersrank.portfolio.version }}
-        <script async src="https://unpkg.com/@codersrank/portfolio@{{ $version }}/codersrank-portfolio.min.js"></script>
+        <script defer src="https://unpkg.com/@codersrank/portfolio@{{ $version }}/codersrank-portfolio.min.js"></script>
       {{ end }}
     {{ end }}
 
