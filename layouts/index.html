@@ -28,37 +28,6 @@
     {{ if site.GoogleAnalytics }}
         {{ template "_internal/google_analytics_async.html" . }}
     {{ end }}
-
-    <!--================= Google reCaptcha ===============================-->
-    {{ if .Site.Params.reCaptcha.enable }}
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-      function onSubmit(token) {
-        window.open("mailto:contact@javinator9889.com");
-      }
-    </script>
-    {{ end }}
-
-    <!--================= CodersRank widgets ==============================-->
-    {{ if .Site.Params.codersrank.enable }}
-      {{ $codersrank := .Site.Params.codersrank }}
-      {{ if $codersrank.summary.enable }}
-        {{ $version := $codersrank.summary.version }}
-        <script async src="https://unpkg.com/@codersrank/summary@{{ $version }}/codersrank-summary.min.js"></script>
-      {{ end }}
-      {{ if $codersrank.activity.enable }}
-        {{ $version := $codersrank.activity.version }}
-        <script async src="https://unpkg.com/@codersrank/activity@{{ $version }}/codersrank-activity.min.js"></script>
-      {{ end }}
-      {{ if $codersrank.skills.enable }}
-        {{ $version := $codersrank.skills.version }}
-        <script async src="https://unpkg.com/@codersrank/skills-chart@{{ $version }}/codersrank-skills-chart.min.js"></script>
-      {{ end }}
-      {{ if $codersrank.portfolio.enable }}
-        {{ $version := $codersrank.portfolio.version }}
-        <script src="https://unpkg.com/@codersrank/portfolio@{{ $version }}/codersrank-portfolio.min.js"></script>
-      {{ end }}
-    {{ end }}
   </head>
   <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
 
@@ -106,5 +75,35 @@
     <script src="{{ "/js/github-button.js" | relURL }}"></script>
     <script src="{{ "/js/home.js" | relURL }}"></script>
     <script src="{{ "/js/jquery.filterizr.min.js" | relURL }}"></script>
+     <!--================= Google reCaptcha ===============================-->
+     {{ if .Site.Params.reCaptcha.enable }}
+     {{ $mail := site.Params.email }}
+     <script async src="https://www.google.com/recaptcha/api.js"></script>
+     <script>
+       function onSubmit(token) {
+         window.open("mailto:{{ $email }}");
+       }
+     </script>
+     {{ end }}
+     <!--================= CodersRank widgets ==============================-->
+    {{ if .Site.Params.codersrank.enable }}
+    {{ $codersrank := .Site.Params.codersrank }}
+    {{ if $codersrank.summary.enable }}
+      {{ $version := $codersrank.summary.version }}
+      <script async src="https://unpkg.com/@codersrank/summary@{{ $version }}/codersrank-summary.min.js"></script>
+    {{ end }}
+    {{ if $codersrank.activity.enable }}
+      {{ $version := $codersrank.activity.version }}
+      <script async src="https://unpkg.com/@codersrank/activity@{{ $version }}/codersrank-activity.min.js"></script>
+    {{ end }}
+    {{ if $codersrank.skills.enable }}
+      {{ $version := $codersrank.skills.version }}
+      <script async src="https://unpkg.com/@codersrank/skills-chart@{{ $version }}/codersrank-skills-chart.min.js"></script>
+    {{ end }}
+    {{ if $codersrank.portfolio.enable }}
+      {{ $version := $codersrank.portfolio.version }}
+      <script src="https://unpkg.com/@codersrank/portfolio@{{ $version }}/codersrank-portfolio.min.js"></script>
+    {{ end }}
+  {{ end }}
   </body>
 </html>
