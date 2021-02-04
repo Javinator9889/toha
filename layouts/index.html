@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{- .Site.Title -}}</title>
+    <title>{{- .Site.Params.websiteTitle -}}</title>
     {{ $siteDescription := .Site.Params.description }}
     {{ if (index .Site.Data .Site.Language.Lang).site }}
       {{ $siteConfig := (index .Site.Data .Site.Language.Lang).site }}
@@ -81,29 +81,34 @@
      <script async src="https://www.google.com/recaptcha/api.js"></script>
      <script>
        function onSubmit(token) {
-         window.open("mailto:{{ $email }}");
+         window.open("mailto:{{ $mail }}");
        }
      </script>
      {{ end }}
      <!--================= CodersRank widgets ==============================-->
     {{ if .Site.Params.codersrank.enable }}
-    {{ $codersrank := .Site.Params.codersrank }}
-    {{ if $codersrank.summary.enable }}
-      {{ $version := $codersrank.summary.version }}
-      <script async src="https://unpkg.com/@codersrank/summary@{{ $version }}/codersrank-summary.min.js"></script>
+      {{ $codersrank := .Site.Params.codersrank }}
+      {{ if $codersrank.summary.enable }}
+        {{ $version := $codersrank.summary.version }}
+        <script async src="https://unpkg.com/@codersrank/summary@{{ $version }}/codersrank-summary.min.js"></script>
+      {{ end }}
+      {{ if $codersrank.activity.enable }}
+        {{ $version := $codersrank.activity.version }}
+        <script async src="https://unpkg.com/@codersrank/activity@{{ $version }}/codersrank-activity.min.js"></script>
+      {{ end }}
+      {{ if $codersrank.skills.enable }}
+        {{ $version := $codersrank.skills.version }}
+        <script async src="https://unpkg.com/@codersrank/skills-chart@{{ $version }}/codersrank-skills-chart.min.js"></script>
+      {{ end }}
+      {{ if $codersrank.portfolio.enable }}
+        {{ $version := $codersrank.portfolio.version }}
+        <script async src="https://unpkg.com/@codersrank/portfolio@{{ $version }}/codersrank-portfolio.min.js"></script>
+      {{ end }}
     {{ end }}
-    {{ if $codersrank.activity.enable }}
-      {{ $version := $codersrank.activity.version }}
-      <script async src="https://unpkg.com/@codersrank/activity@{{ $version }}/codersrank-activity.min.js"></script>
+
+    <!--=================== Advanced SEO =====================================-->
+    {{ if .Site.Params.seo.enable }}
+     {{ partial "seo_schema.html" . }}
     {{ end }}
-    {{ if $codersrank.skills.enable }}
-      {{ $version := $codersrank.skills.version }}
-      <script async src="https://unpkg.com/@codersrank/skills-chart@{{ $version }}/codersrank-skills-chart.min.js"></script>
-    {{ end }}
-    {{ if $codersrank.portfolio.enable }}
-      {{ $version := $codersrank.portfolio.version }}
-      <script src="https://unpkg.com/@codersrank/portfolio@{{ $version }}/codersrank-portfolio.min.js"></script>
-    {{ end }}
-  {{ end }}
   </body>
 </html>

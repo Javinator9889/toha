@@ -1,0 +1,25 @@
+{{ if (index .Site.Data .Site.Language.Lang).site }}
+  {{ $siteConfig := (index .Site.Data .Site.Language.Lang).site }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "url": {{ .Permalink }},
+    "image": {{ printf "%s%s" .Permalink "logo.png" }},
+    "dateModified": {{ now | default .Date }},
+    "brand": {{ $siteConfig.person.brand }},
+    "birthDate": {{ $siteConfig.person.birthDate }},
+    "birthPlace": {{ $siteConfig.person.birthPlace }},
+    "additionalName": {{ $siteConfig.person.nickname }},
+    "gender": {{ $siteConfig.person.gender }},
+    "homeLocation": {{ $siteConfig.person.location }},
+    "jobTitle": {{ $siteConfig.person.jobTitle }},
+    "knowsAbout": {{ $siteConfig.person.knowledge }},
+    "knowsLanguage": {{ $siteConfig.person.languages }},
+    "name": {{ $siteConfig.person.name }},
+    "alternateName": {{ $siteConfig.person.nickname }},
+    "email": {{ $siteConfig.person.mail }},
+    "description": {{ $siteConfig.person.description }}
+  }
+  </script>
+{{ end }}
