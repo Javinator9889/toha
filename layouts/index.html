@@ -143,22 +143,7 @@
      {{ partial "seo_schema.html" . }}
     {{ end }}
     {{ if .Site.Params.lazyload.enable }}
-      <script type="text/javascript">
-        window.onload = () => {
-          const placeholder = $('.placeholder');
-
-          placeholder.each(index => {
-            const smallImage = $(this).find('.img-small');
-            const img = new Image();
-            img.src = smallImage.attr('src');
-            img.onload = () => smallImage.addClass('loaded');
-
-            const imgLarge = new Image();
-            imgLarge.onload = () => imgLarge.classList.add('loaded');
-            $(this).append(imgLarge);
-          });
-        }
-      </script>
+      <script src="{{ "/js/lazysizes.min.js" | relURL }}" async></script>
     {{ end }}
   </body>
 </html>
