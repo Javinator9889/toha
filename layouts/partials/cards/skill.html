@@ -4,13 +4,12 @@
       <div class="card-head d-flex">
         {{ if .logo }}
           {{ $logoImage := resources.Get .logo }}
-
-          {{/*  svg don't support "Fit" operation   */}}
-          {{ if ne $logoImage.MediaType.SubType "svg" }}
-            {{ $logoImage := $logoImage.Fit "24x24" }}
+          {{ if and $logoImage (ne $logoImage.MediaType.SubType "svg") }}
+            {{ $logoImage := $logoImage.Resize "24x24" }}
           {{ end }}
+          {{ $logoImage := $logoImage.RelPermalink }}
 
-          <img class="card-img-xs lazyload" src="{{ $logoImage.RelPermalink }}" alt="{{ .name }}" />
+          <img class="card-img-xs lazyload" src="{{ $logoImage }}" alt="{{ .name }}" />
         {{ end }}
         <h5 class="card-title">{{ .name }}</h5>
       </div>
