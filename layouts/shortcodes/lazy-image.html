@@ -1,0 +1,27 @@
+{{ $image := (.Page.Resources.GetMatch (index .Params 0)) }}
+{{ $placeholder := $image.Resize "48x q20" }}
+
+<div class="image_placeholder" style="max-width: {{$image.Width}}px;">
+    <div class="placeholder" data-large="{{ $image.Permalink }}">
+        <img src="{{ $placeholder.Permalink }}" 
+        {{ if .Get "title"}}
+            alt="{{.Get "title"}}"
+        {{end}}
+        {{ if .Get "width"}}
+            width="{{.Get "width"}}"
+        {{end}}
+        {{ if .Get "height"}}
+            height="{{.Get "height"}}"
+        {{end}}
+        {{ if .Get "float"}}
+            style="float: {{.Get "float"}};"
+        {{end}}
+        {{ if .Get "align"}}
+            class="{{.Get "align"}} img-small"
+        {{ else }}
+            class="img-small"
+        {{end}}
+        >
+        <div style="padding-bottom: {{ div (mul $image.Height 100.0) $image.Width }}%;"></div>
+    </div>
+</div>
