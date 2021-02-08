@@ -20,6 +20,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://api.github.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://code.jquery.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://stackpath.bootstrapcdn.com" crossorigin="anonymous">
     {{ if .Site.Params.codersrank.enable }}
     <link rel="preconnect" href="https://unpkg.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://api.codersrank.io" crossorigin="anonymous">
@@ -54,7 +56,7 @@
     {{ if site.GoogleAnalytics }}
         {{ template "_internal/google_analytics_async.html" . }}
     {{ end }}
-    
+
     <!--=================== Advanced SEO =====================================-->
     {{ if .Site.Params.seo.enable }}
      {{ partial "seo_schema.html" . }}
