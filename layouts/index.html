@@ -54,6 +54,11 @@
     {{ if site.GoogleAnalytics }}
         {{ template "_internal/google_analytics_async.html" . }}
     {{ end }}
+    
+    <!--=================== Advanced SEO =====================================-->
+    {{ if .Site.Params.seo.enable }}
+     {{ partial "seo_schema.html" . }}
+    {{ end }}
   </head>
   <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
     {{ if .Site.Params.gtm.enable }}
@@ -136,11 +141,6 @@
         {{ $version := $codersrank.portfolio.version }}
         <script defer src="https://unpkg.com/@codersrank/portfolio@{{ $version }}/codersrank-portfolio.min.js"></script>
       {{ end }}
-    {{ end }}
-
-    <!--=================== Advanced SEO =====================================-->
-    {{ if .Site.Params.seo.enable }}
-     {{ partial "seo_schema.html" . }}
     {{ end }}
     {{ if .Site.Params.lazyload.enable }}
       <script src="{{ "/js/lazysizes.min.js" | relURL }}" async></script>
