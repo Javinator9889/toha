@@ -6,7 +6,6 @@
     "@type": "Person",
     "url": {{ .Permalink }},
     "image": {{ printf "%s%s" .Permalink "files/logo.png" }},
-    "dateModified": {{ now | default .Date }},
     "brand": {{ $siteConfig.person.brand }},
     "birthDate": {{ $siteConfig.person.birthDate }},
     "birthPlace": {{ $siteConfig.person.birthPlace }},
