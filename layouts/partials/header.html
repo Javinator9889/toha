@@ -19,9 +19,12 @@
 
 <!-- ============ import common css ========== -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="{{ "/css/layouts/main.css" | relURL }}"/>
-<link rel="stylesheet" href="{{ "/css/style.css" | relURL }}"/>
-<link rel="stylesheet" href="{{ "/css/navigators/navbar.css" | relURL }}"/>
+{{ $main := resources.GetMatch "**layouts/main.css**" }}
+{{ $style := resources.GetMatch "**style.css**" }}
+{{ $navbar := resources.GetMatch "**navigators/navbar.css**" }}
+{{ $concatAllCSS := slice $main $style $navbar | resources.Concat "css/style.all.css" | postCSS | minify }}
+{{ $secureCSS := $concatAllCSS | fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $secureCSS.Permalink | relURL }}" integrity="{{ $secureCSS.Data.Integrity }}" />
 
 <!--=================== cdn ==============================-->
 <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
@@ -40,5 +43,15 @@
 <!--================= fab-icon =========================-->
 <link rel="icon" type="image/png" href="{{ $favicon }}" />
 
-<!--================= custom style overrides =========================-->
-<link rel="stylesheet" href="{{ "/css/style.css" | relURL }}"/>
+<!-- import index page specific headers -->
+{{ $home := resources.GetMatch "**sections/home.css**" }}
+{{ $about := resources.GetMatch "**sections/about.css**" }}
+{{ $skills := resources.GetMatch "**sections/skills.css**" }}
+{{ $experiences := resources.GetMatch "**sections/experiences.css**" }}
+{{ $education := resources.GetMatch "**sections/education.css**" }}
+{{ $projects := resources.GetMatch "**sections/projects.css**" }}
+{{ $recentposts := resources.GetMatch "**sections/recent-posts.css**" }}
+{{ $achievements := resources.GetMatch "**sections/achievements.css**" }}
+{{ $sectionsCSS := slice $home $about $skills $experiences $education $projects $recentposts $achievements | resources.Concat "css/sections.all.css" | postCSS | minify }}
+{{ $secureSectionsCSS := $sectionsCSS | fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $secureSectionsCSS.Permalink | relURL }}" integrity="{{ $secureSectionsCSS.Data.Integrity }}" />

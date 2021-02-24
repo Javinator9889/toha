@@ -42,16 +42,6 @@
     <!-- import common headers -->
     {{- partial "header.html" . -}}
 
-    <!-- import index page specific headers -->
-    <link rel="stylesheet" href="{{ "/css/sections/home.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/about.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/skills.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/experiences.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/education.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/projects.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/recent-posts.css" | relURL }}"/>
-    <link rel="stylesheet" href="{{ "/css/sections/achievements.css" | relURL }}"/>
-
     <!-- Add Google Analytics if enabled in configuration -->
     {{ if site.GoogleAnalytics }}
         {{ template "_internal/google_analytics_async.html" . }}
@@ -108,12 +98,6 @@
 
     <!--- ADD COMMON SCRIPTS --------------->
     {{ partial "scripts.html" . }}
-
-    <!--- ADD INDEX PAGE SPECIFIC SCRIPTS -->
-    <script defer src="{{ "/js/itype.min.js" | relURL }}"></script>
-    <script defer src="{{ "/js/github-button.js" | relURL }}"></script>
-    <script defer src="{{ "/js/home.js" | relURL }}"></script>
-    <script defer src="{{ "/js/jquery.filterizr.min.js" | relURL }}"></script>
      <!--================= Google reCaptcha ===============================-->
      {{ if .Site.Params.reCaptcha.enable }}
      {{ $mail := site.Params.email }}
