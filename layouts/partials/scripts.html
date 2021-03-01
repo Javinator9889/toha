@@ -7,9 +7,16 @@
 {{ $githubjs := resources.GetMatch "**github-button.js**" }}
 {{ $homejs := resources.GetMatch "**home.js**" }}
 
-{{ $concatalljs := slice $navbarjs $mainjs $githubjs $homejs | resources.Concat "js/bundle-all.min.js" | minify }}
+{{ $concatalljs := slice $navbarjs $mainjs $githubjs $homejs | resources.Concat "js/bundle-all.js" | minify }}
 {{ $secureallJS := $concatalljs | fingerprint "sha512" }}
 <script defer src="{{ $secureallJS.Permalink | relURL }}" integrity="{{ $secureallJS.Data.Integrity }}"></script>
 
 <script defer src="{{ "/js/itype.min.js" | relURL }}"></script>
 <script defer src="{{ "/js/jquery.filterizr.min.js" | relURL }}"></script>
+
+{{ $brands := resources.Get "js/fontawesome/brands.min.js" }}
+{{ $solids := resources.Get "js/fontawesome/solid.min.js" }}
+{{ $fa := resources.Get "js/fontawesome/fontawesome.min.js" }}
+{{ $concatFa := slice $brands $solids $fa | resources.Concat "js/fa-bundle.js" | minify }}
+{{ $secureFa := $concatFa | fingerprint "sha512" }}
+<script defer src="{{ $secureFa.Permalink | relURL }}" integrity="{{ $secureFa.Data.Integrity }}"></script>
