@@ -97,3 +97,24 @@ other = "02 Jan 2006 15:04 MST"
 
 [last_update]
 other = "This website was last updated on "
+
+[responsibilities]
+other = "Responsibilities:"
+
+[comments_javascript]
+other = "Please enable JavaScript to view the"
+
+[comments_by]
+other = "comments powered by"
+
+[read]
+other = "Read"
+
+[project_star]
+other = "Star"
+
+[project_details]
+other = "Details"
+
+[err_404]
+other = "The page you are looking for is not there yet."
