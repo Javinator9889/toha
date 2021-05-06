@@ -71,11 +71,18 @@ other = "Crédito obtenido"
 [extracurricular_activities]
 other = "Actividades extracurriculares"
 
-[see_more]
+[show_more]
 other = "Ver más"
 
 [show_less]
+<<<<<<< HEAD
 other = "Ver menos"
+=======
+other = "Muestra menos"
+
+# [responsibilities]
+# other = "Responsibilities:"
+>>>>>>> v2.2.0
 
 [activity]
 other = "Actividad en el último año"
@@ -118,3 +125,12 @@ other = "Detalles"
 
 [err_404]
 other = "La página que estás buscando no está aquí todavía."
+
+[more]
+other = "Más"
+
+[view_certificate]
+other = "Ver Certificado"
+
+[notes]
+other = "Notas"

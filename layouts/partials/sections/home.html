@@ -107,6 +107,7 @@
   <div class="container content text-center">
     <img src="{{ $authorImage.RelPermalink }}"
       class="rounded-circle mx-auto d-block img-fluid lazyload"
+      alt="Author Image"
     />
     <div class="typing-carousel">
       <span class="ityped-cursor"></span>
@@ -129,7 +130,7 @@
         {{ if .section.id }}
           {{ $sectionID = .section.id }}
         {{ end }}
-        <a href="#{{ $sectionID }}"><i class="arrow bounce fa fa-chevron-down"></i></a>
+        <a href="#{{ $sectionID }}" aria-label="{{ i18n "read" }} {{ i18n "more" }} - {{ $name }}"><i class="arrow bounce fa fa-chevron-down"></i></a>
       {{ end }}
     {{ end }}
   </div>

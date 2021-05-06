@@ -8,9 +8,9 @@
 {{ end }}
 
 {{ define "sidebar" }}
-  {{ $blogHome:="#" }}
+  {{ $homePage:="#" }}
   {{ if site.IsMultiLingual }}
-    {{ $blogHome = (path.Join (cond ( eq .Language.Lang "en") "" .Language.Lang) .Type) }}
+    {{ $homePage = (path.Join (cond ( eq .Language.Lang "en") "" .Language.Lang) .Type) }}
   {{ end }}
 
   <section class="sidebar-section" id="sidebar-section">
@@ -23,7 +23,7 @@
           <ul class="tree" id="tree">
             <li id="list-heading"><a href="{{ .Type | relLangURL }}" data-filter="all">{{ i18n .Type }}</a></li>
             <div class="subtree">
-                {{ partial "navigators/sidebar.html" (dict "menus" site.Menus.sidebar "ctx" .) }}
+                {{ partial "navigators/sidebar.html" (dict "menuName" "sidebar" "menuItems" site.Menus.sidebar "ctx" .) }}
             </div>
           </ul>
         </div>
@@ -43,7 +43,7 @@
             <a href="${link}" class="post-card-link">
               <div class="card" style="min-height: 352px;"><a href="${link}" class="post-card-link">
                 <div class="card-head">
-                  <img class="card-img-top" src="${hero}">
+                  <img class="card-img-top" src="${hero}" alt="Card Heading Image">
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">${title}</h5>

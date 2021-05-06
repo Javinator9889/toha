@@ -68,8 +68,11 @@ other = "取得したクレジット"
 [extracurricular_activities]
 other = "課外活動"
 
-[see_more]
+[show_more]
 other = "続きを見る"
+
+[show_less]
+other = "表示を減らす"
 
 # [responsibilities]
 # other = "Responsibilities:"
@@ -94,3 +97,12 @@ other = "続きを見る"
 
 # [err_404]
 # other = "The page you are looking for is not there yet."
+
+[more]
+other = "もっと"
+
+[view_certificate]
+other = "ビューの証明書"
+
+[notes]
+other = "ノート"
