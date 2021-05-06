@@ -75,14 +75,7 @@ other = "Actividades extracurriculares"
 other = "Ver más"
 
 [show_less]
-<<<<<<< HEAD
 other = "Ver menos"
-=======
-other = "Muestra menos"
-
-# [responsibilities]
-# other = "Responsibilities:"
->>>>>>> v2.2.0
 
 [activity]
 other = "Actividad en el último año"
